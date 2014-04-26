@@ -1,12 +1,12 @@
 {
-    "contents" : "## cachematrix.R contains functions to cache support of matrix inversion\n\n## makeCacheMatrix is encapsulation of matrix with its inversion\n## input : matrix\n## output : list of operations\n##  $get(x) - get matrix\n##  $set(x) - set matrix\n##  $getInversion(x) - get inversion of matrix\n##  $setInversion(x) - set inversion of matrix\n\nmakeCacheMatrix <- function(x = matrix()) {\n  ## throw error if matrix is not square\n  if(ncol(x) != nrow(x)){\n    stop(\"matrix has to be square\")\n  }\n  inversion <- NULL\n  set <- function(y) {\n    x <<-y\n    inversion <<- NULL\n  }\n  get <- function() x\n  setInversion <- function(i) inversion <<- i\n  getInversion <- function() inversion\n  list(set = set, get = get, \n       setInversion = setInversion, getInversion = getInversion)\n}\n\n## Write a short comment describing this function\n## cacheSolve resolves getting of matrix inverse \n## input : cacheMatrix (created with function above)\n## output : inversion of matrix\ncacheSolve <- function(x, ...) {        \n  inversion <- x$getInversion()\n  if(!is.null(inversion)){\n    return(inversion)   \n  }\n  inversion <- solve(x$get())\n  x$setInversion(inversion)\n  inversion\n}\n",
+    "contents" : "## cachematrix.R contains functions to cache support of matrix inversion\n\n## makeCacheMatrix is encapsulation of matrix with its inversion\n## input : matrix\n## output : list of operations\n##  $get(x) - get matrix\n##  $set(x) - set matrix\n##  $getInversion(x) - get inversion of matrix\n##  $setInversion(x) - set inversion of matrix\n\nmakeCacheMatrix <- function(x = matrix()) {\n  ## throw error if matrix is not square\n  if(ncol(x) != nrow(x)){\n    stop(\"matrix has to be square\")\n  }\n  inversion <- NULL\n  set <- function(y) {\n    x <<-y\n    inversion <<- NULL\n  }\n  get <- function() x\n  setInversion <- function(i) inversion <<- i\n  getInversion <- function() inversion\n  list(set = set, get = get, \n       setInversion = setInversion, getInversion = getInversion)\n}\n\n## cacheSolve resolves getting of matrix inverse \n## input : cacheMatrix (created with function above)\n## output : inversion of matrix\ncacheSolve <- function(x, ...) {        \n  inversion <- x$getInversion()\n  if(!is.null(inversion)){\n    return(inversion)   \n  }\n  inversion <- solve(x$get())\n  x$setInversion(inversion)\n  inversion\n}\n",
     "created" : 1398540058802.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "1982742930",
+    "hash" : "254066044",
     "id" : "159892BD",
-    "lastKnownWriteTime" : 1398545678,
+    "lastKnownWriteTime" : 1398545849,
     "path" : "C:/R/ProgrammingAssignment2/cachematrix.R",
     "project_path" : "cachematrix.R",
     "properties" : {
